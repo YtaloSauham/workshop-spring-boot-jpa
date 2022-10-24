@@ -1,15 +1,15 @@
 package com.backend.apirestbackendspringboot.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-@Entity	
-public class Users implements Serializable {
+@Entity
+@Table(name = "tb_user")
+public class User implements Serializable {
 	
 	
 	
@@ -22,16 +22,18 @@ public class Users implements Serializable {
 	private String email;
 	private String phone;
 	private String password;
-	
-	
-	
-	public Users() {
-		
+
+	@OneToMany(mappedBy = "client")
+	private List<Order> orders = new ArrayList<>();
+
+
+	public User() {
+
 	}
 
 
 
-	public Users(Long id, String name, String email, String phone, String password) {
+	public User(Long id, String name, String email, String phone, String password) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -100,6 +102,9 @@ public class Users implements Serializable {
 		this.password = password;
 	}
 
+	public List<Order> getOrders() {
+		return orders;
+	}
 
 
 	@Override
@@ -117,7 +122,7 @@ public class Users implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Users other = (Users) obj;
+		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
 	

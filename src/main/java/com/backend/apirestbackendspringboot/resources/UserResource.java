@@ -1,7 +1,6 @@
  package com.backend.apirestbackendspringboot.resources;
 
 import com.backend.apirestbackendspringboot.services.UserServices;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend.apirestbackendspringboot.entities.Users;
+import com.backend.apirestbackendspringboot.entities.User;
 
 import java.util.List;
 
@@ -23,15 +22,15 @@ public class UserResource {
 	 private UserServices service;
 	@GetMapping	
 	
-	public ResponseEntity<List<Users>> findAllUsers(){
-		List<Users> list = service.findAll();
+	public ResponseEntity<List<User>> findAllUsers(){
+		List<User> list = service.findAll();
 		
 		return ResponseEntity.ok().body(list);
 	}
 
 	@GetMapping(value = "/{id}")
-	 public ResponseEntity<Users> findById(@PathVariable Long id){
-		Users obj = service.findById(id);
+	 public ResponseEntity<User> findById(@PathVariable Long id){
+		User obj = service.findById(id);
 		return  ResponseEntity.ok().body(obj);
 	}
 
