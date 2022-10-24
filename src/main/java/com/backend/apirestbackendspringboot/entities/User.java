@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -24,6 +25,7 @@ public class User implements Serializable {
 	private String password;
 
 	@OneToMany(mappedBy = "client")
+	@JsonIgnore
 	private List<Order> orders = new ArrayList<>();
 
 
