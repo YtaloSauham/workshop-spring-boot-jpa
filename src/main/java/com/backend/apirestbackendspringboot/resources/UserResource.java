@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend.apirestbackendspringboot.entities.User;
+import com.backend.apirestbackendspringboot.entities.Users;
 
 @RestController
 @RequestMapping(value ="/users")
@@ -15,8 +15,8 @@ public class UserResource {
 	
 	@GetMapping	
 	
-	public ResponseEntity<User> findAllUsers(){
-		User u = new User(1L,"Maria","maria@gmail.com","99999", "12345");
+	public ResponseEntity<Users> findAllUsers(){
+		Users u = new Users(1L,"Maria","maria@gmail.com","99999", "12345");
 		
 		return ResponseEntity.ok().body(u);
 	}
